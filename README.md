@@ -1,14 +1,46 @@
 # DoCIS Lab #6
 
-Development of Corporate Information Systems Laboratory #6 (based on #4).
+Development of Corporate Information Systems Laboratory #6 (based on lab #4).
 
-## Database
+## Install
+
+### Database
 
 Run `init.sql` to create table and fill it with test values.
 
-## REST Client
+### Server
 
-Run `ru.sfu.rest.RestClient.java` located [here](src/main/java/ru/sfu/rest/RestClient.java).
+Create a local server configuration of `Apache Tomcat 10` server and deploy it.
+
+### REST Client
+
+At `ru.sfu.rest.RestClient.java` [(link)](src/main/java/ru/sfu/rest/RestClient.java), 
+set the `url` variable to the URL of the configured server and run `RestClient.java`.
+
+## Dependencies
+
+Project is built with Maven on `maven-archetype-webapp`.
+
+List of used dependencies:
+- Spring 6.0.0
+   - Core
+   - Beans
+   - Web
+   - Web MVC
+   - JDBC
+- Spring Data JPA 3.0.0
+- Thymeleaf 3.1.0.RELEASE
+  - Thymeleaf Spring 6
+- Jakarta
+   - Persistence API 3.1.0
+   - Servlet API 6.0.0
+   - Annotation API 2.1.1
+   - Validation API 3.0.2
+- Hibernate
+   - Core 6.1.5.Final
+   - Validator 8.0.0.Final
+- PostgreSQL 42.5.0
+- Jackson Databind 2.14.0
 
 ## REST API
 ### Purpose of work

@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.*;
 import ru.sfu.entity.Television;
 import ru.sfu.repository.TelevisionRepository;
 
-import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
+
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -97,14 +99,13 @@ public class TelevisionController {
      * REST POST New Television in JSON format
      * @param tv Television JSON
      * @param bindingResult Validation result
-     * @param response Response object
+     * @param response HTTP Response Servlet
      * @return Television JSON
      * @throws BindException Validation error
      */
     @PostMapping(headers = "Accept=application/json")
-    @ResponseBody
     @ResponseStatus(HttpStatus.CREATED)
-    public Television postTelevisionJson(
+    public @ResponseBody Television postTelevisionJson(
             @Valid @RequestBody Television tv,
             BindingResult bindingResult,
             HttpServletResponse response
@@ -135,6 +136,28 @@ public class TelevisionController {
         }
         rep.save(tv);
         return "redirect:/tvs/" + tv.getId();
+    }
+
+    /**
+     * REST POST New Television in HTML FORM format
+     * @param tv Television FORM
+     * @param bindingResult Validation result
+     * @param response HTTP Response Servlet
+     * @return Television HTML view
+     * @throws IOException Response redirect error
+     */
+    @PostMapping(consumes = "application/x-www-form-urlencoded")
+    @ResponseStatus(HttpStatus.CREATED)
+    public String postTelevisionForm(
+            @Valid @ModelAttribute("tv") Television tv,
+            BindingResult bindingResult,
+            HttpServletResponse response
+    ) throws IOException {
+        if (!bindingResult.hasErrors()) {
+            rep.save(tv);
+            response.sendRedirect("/tvs/" + tv.getId());
+        }
+        return "tvs/new";
     }
 
     // REST PUT Television
@@ -290,7 +313,7 @@ public class TelevisionController {
      */
     @PostMapping(value = "/{id}/update")
     public String updateTelevision(
-            @ModelAttribute @Valid Television tv,
+            @ModelAttribute("tv") @Valid Television tv,
             BindingResult bindingResult
     ) {
         if (bindingResult.hasErrors())

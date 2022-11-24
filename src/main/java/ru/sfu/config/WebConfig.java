@@ -10,9 +10,9 @@ import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
-import org.thymeleaf.spring5.SpringTemplateEngine;
-import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
-import org.thymeleaf.spring5.view.ThymeleafViewResolver;
+import org.thymeleaf.spring6.SpringTemplateEngine;
+import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.spring6.view.ThymeleafViewResolver;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -101,16 +101,17 @@ public class WebConfig implements WebMvcConfigurer {
                         new HashMap<>() {{
                             put("json", MediaType.APPLICATION_JSON);
                             put("html", MediaType.TEXT_HTML);
+                            put("form", MediaType.APPLICATION_FORM_URLENCODED);
                         }}
                 );
     }
 
-    /**
-     * Configure Content Negotiating View Resolver
-     * @param cnManager ContentNegotiationManager
-     * @param templateEngine TemplateEngine
-     * @return ViewResolver
-     */
+            /**
+             * Configure Content Negotiating View Resolver
+             * @param cnManager ContentNegotiationManager
+             * @param templateEngine TemplateEngine
+             * @return ViewResolver
+             */
     @Bean
     @Autowired
     public ContentNegotiatingViewResolver viewResolver(

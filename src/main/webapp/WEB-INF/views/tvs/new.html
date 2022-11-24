@@ -6,7 +6,7 @@
   <link rel="stylesheet" th:href="@{~/css/tvs.css}">
 </head>
 <body>
-  <form th:insert="tvs/form :: form" th:method="post" th:action="@{/tvs?format='html'}" th:object="${tv}">
+  <form th:insert="tvs/form :: form" th:method="post" th:action="@{/tvs}" th:object="${tv}">
   </form>
 
   <a th:href="@{/tvs/menu}">Menu</a>
