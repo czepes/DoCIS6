@@ -8,6 +8,8 @@ Development of Corporate Information Systems Laboratory #6 (based on lab #4).
 
 Run `init.sql` to create table and fill it with test values.
 
+Configure Database connection in `application.properties` [(link)](src/main/resources/application.properties).
+
 ### Server
 
 Create a local server configuration of `Apache Tomcat 10` server and deploy it.
