@@ -6,9 +6,9 @@ Development of Corporate Information Systems Laboratory #6 (based on lab #4).
 
 ### Database
 
-Run `init.sql` to create table and fill it with test values.
+Run [`init.sql`](init.sql) to create table and fill it with test values.
 
-Configure Database connection in `application.properties` [(link)](src/main/resources/application.properties).
+Configure Database connection in  [`application.properties`](src/main/resources/application.properties).
 
 ### Server
 
@@ -16,7 +16,7 @@ Create a local server configuration of `Apache Tomcat 10` server and deploy it.
 
 ### REST Client
 
-At `ru.sfu.rest.RestClient.java` [(link)](src/main/java/ru/sfu/rest/RestClient.java), 
+At  [`ru.sfu.rest.RestClient.java`](src/main/java/ru/sfu/rest/RestClient.java), 
 set the `url` variable to the URL of the configured server and run `RestClient.java`.
 
 ## Dependencies
